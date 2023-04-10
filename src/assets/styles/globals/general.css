@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "main";
+    src: url(../../font/irsans_bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "main";
+    src: url(../../font/irsans_regular.ttf) format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+table {
+    border-collapse: collapse;
+}
+
+body,
+html {
+    font-family: 'main';
+}
+
+body {
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible
+}
+
+:focus-visible {
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+article {
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ebebeb;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(197, 197, 197);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(85, 94, 129);
+}
+
+a {
+    text-decoration: none;
+    direction: rtl;
+    text-align: right;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    direction: rtl;
+    text-align: right;
+    font-family: 'main' !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: 700;
+    direction: rtl;
+    text-align: right;
+}
+
+
+p {
+    font-size: 1rem;
+    direction: rtl;
+    text-align: right;
+}
+
+label {
+    direction: rtl;
+    text-align: right;
+}
+
+input {
+    font-size: 0.9rem;
+    font-weight: 400;
+    direction: rtl;
+    text-align: right;
+    font-family: 'main' !important;
+}
+
+span {
+    direction: rtl;
+    text-align: right;
+}

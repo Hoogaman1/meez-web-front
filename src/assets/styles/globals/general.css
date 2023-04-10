@@ -75,15 +75,11 @@ article {
 
 a {
     text-decoration: none;
-    direction: rtl;
-    text-align: right;
 }
 
 button {
     cursor: pointer;
     border: none;
-    direction: rtl;
-    text-align: right;
     font-family: 'main' !important;
 }
 
@@ -95,31 +91,45 @@ h5,
 h6 {
     margin: 0;
     font-weight: 700;
-    direction: rtl;
-    text-align: right;
 }
 
 
 p {
     font-size: 1rem;
-    direction: rtl;
-    text-align: right;
-}
-
-label {
-    direction: rtl;
-    text-align: right;
 }
 
 input {
     font-size: 0.9rem;
     font-weight: 400;
-    direction: rtl;
-    text-align: right;
     font-family: 'main' !important;
 }
 
-span {
-    direction: rtl;
-    text-align: right;
+
+.container {
+    width: 1320px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1400px) {
+    .container {
+        width: 1140px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        width: 960px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .container {
+        width: 680px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .container {
+        width: 90%;
+    }
 }

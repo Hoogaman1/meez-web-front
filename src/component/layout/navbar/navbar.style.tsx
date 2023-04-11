@@ -21,7 +21,7 @@ export const NavBarField = styled.nav({
         display: 'block'
     },
 
-    '& .drop_down': {
+    '& .drop_down_field': {
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
@@ -78,15 +78,17 @@ export const SubNavbarField = styled.div({
 
     a: {
         color: '#646464',
-        fontSize: '0.8rem'
+        fontSize: '0.8rem',
+        lineHeight: '12px'
     },
 
-    '& .drop_down': {
+    '& .drop_down_field': {
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
         color: '#646464',
         fontSize: '0.8rem',
+        lineHeight: '12px',
 
         img: {
             width: '15px',

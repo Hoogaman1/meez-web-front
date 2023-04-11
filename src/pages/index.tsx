@@ -1,5 +1,5 @@
 // Components
-import Navbar from '@/component/layout/navbar';
+import Navbar from '@/component/layout/navbar/navbar';
 import Footer from '@/component/layout/footer';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ export default Index;
 export async function getStaticProps({ locale }: any) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['navbar']))
+            ...(await serverSideTranslations(locale, ['navbar', 'footer']))
         }
     };
 }

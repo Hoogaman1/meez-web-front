@@ -104,6 +104,9 @@ input {
     font-family: 'main' !important;
 }
 
+.MuiPickersCalendarHeader-root {
+    direction:  ltr !important;
+}
 
 .container {
     width: 1320px;

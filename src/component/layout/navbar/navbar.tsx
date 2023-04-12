@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 // Assets
 import { NavBarField, SubNavbarField } from './navbar.style';
 import Logo from '../../../assets/images/logo.png';
-import Location from '../../../assets/images/icons/location.svg';
 import Angle from '../../../assets/images/icons/angle.svg';
 import Calender from '../../../assets/images/icons/calendar.svg';
 import Notification from '../../../assets/images/icons/notification.svg';
@@ -13,6 +12,7 @@ import Search from '../../../assets/images/icons/search.svg';
 
 // Component
 import ProfileDropDown from './profile-dropdown';
+import LocationDropDown from './location-dropdown';
 
 const Navbar = () => {
     const { t } = useTranslation('navbar');
@@ -32,10 +32,7 @@ const Navbar = () => {
                 <div className='left_field'>
                     <Image src={Logo} alt='main logo' className='logo' />
                     <span className='seprator'></span>
-                    <div className='drop_down_field'>
-                        <Image src={Location} alt='' />
-                        <Image src={Angle} alt='' />
-                    </div>
+                    <LocationDropDown />
                 </div>
                 <div className='right_field'>
                     <ProfileDropDown />

@@ -1,22 +1,15 @@
 // Components
-import Navbar from '@/component/layout/navbar/navbar';
-import Footer from '@/component/layout/footer';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Link from 'next/link';
+import LayoutProvider from '@/component/layout/provider';
+import SearchHeader from '@/component/template/search-header';
 
 const Index = () => {
     return (
-        <div>
-            <Navbar />
-            <Link href='/fa' locale='fa'>
-                asd
-            </Link>
-            <br />
-            <Link href='/en' locale='en'>
-                123
-            </Link>
-            <Footer />
-        </div>
+        <LayoutProvider>
+            <main>
+                <SearchHeader />
+            </main>
+        </LayoutProvider>
     );
 };
 
@@ -25,7 +18,7 @@ export default Index;
 export async function getStaticProps({ locale }: any) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['navbar', 'footer']))
+            ...(await serverSideTranslations(locale, ['navbar', 'footer', 'seach-header']))
         }
     };
 }

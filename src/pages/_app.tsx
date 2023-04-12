@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
-import { Global, ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
@@ -16,6 +16,9 @@ import { theme } from '../configs/theme';
 //Assets
 import '../assets/styles/globals/general.css';
 
+// Utils
+import { rtlLangs } from '../utils/constants';
+
 NProgress.configure({
     minimum: 0.3,
     easing: 'ease',
@@ -29,22 +32,16 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 const App = ({ Component, pageProps }: AppProps) => {
     const { locale } = useRouter();
-    const darkModeTheme = createTheme(theme());
     const [direction, setDirection] = useState<'ltr' | 'rtl'>('rtl');
+    const darkModeTheme = createTheme({ direction: direction }, theme());
 
     useEffect(() => {
-        setDirection(locale === 'fa' ? 'rtl' : 'ltr');
+        setDirection(locale! in rtlLangs ? 'rtl' : 'ltr');
+        document.dir = locale! in rtlLangs ? 'rtl' : 'ltr';
     }, [locale]);
 
     return (
         <Provider store={Store}>
-            <Global
-                styles={{
-                    body: {
-                        direction: direction
-                    }
-                }}
-            />
             <ThemeProvider theme={darkModeTheme}>
                 <Toaster
                     position='bottom-left'

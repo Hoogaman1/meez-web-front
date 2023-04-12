@@ -13,5 +13,8 @@
     "Notifications" : "اطلاعیه ها",
     "News for you" : "خبر برای شما",
     "Nothing to see here yet !" : "هنوز چیزی برای نمایش وجود ندارد !",
-    "No notifications just yet. Start booking more tables." : "هنوز اطلاعیه ای وجود ندارد. شروع به رزرو میزهای بیشتر کنید."
+    "No notifications just yet. Start booking more tables." : "هنوز اطلاعیه ای وجود ندارد. شروع به رزرو میزهای بیشتر کنید.",
+    "Metro" : "استان",
+    "Region" : "شهر",
+    "Full list of Metros" : "لیست تمام استان ها"
 }

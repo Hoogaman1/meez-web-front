@@ -24,6 +24,7 @@ export const MainField = styled.div<PropsType>(props => {
             borderRadius: '4px',
             width: '450px',
             border: '1px solid #e2e2e2',
+            zIndex: '10',
 
             '&.show': {
                 opacity: '1',

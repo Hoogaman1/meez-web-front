@@ -20,7 +20,7 @@ export const MainField = styled.div<propsTypes>(props => {
         color: 'white',
 
         h3: {
-            fontSize: '2rem'
+            fontSize: '3rem'
         },
 
         '& .search_box': {

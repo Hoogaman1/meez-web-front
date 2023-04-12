@@ -88,7 +88,7 @@ const SearchHeader = ({ background, smallText }: ComponentTypes) => {
                         placeHolder={t('Please input a Location, Restaurant or Cuisine')!}
                     />
                 </div>
-                <Button text={t('Lets go')} extraClass='search_btn' color='secondary' />
+                <Button text={t('Lets go')!} extraClass='search_btn' color='primary' />
             </div>
             <Link href='/fa' locale='fa'>
                 fa

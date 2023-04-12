@@ -4,7 +4,7 @@ import { ButtonField } from './button.style';
 // Types
 interface ComponentTypes {
     color?: 'primary' | 'secondary';
-    text: string;
+    text: string | number | null;
     extraClass?: string;
 }
 

@@ -7,6 +7,7 @@ export const ButtonField = styled(Button)(props => ({
     backgroundColor:
         props.color === 'primary' ? props.theme.colors.primary : props.color === 'secondary' ? props.theme.colors.secondary : '',
     color: 'white',
+    minHeight: '35px',
 
     '&:hover': {
         backgroundColor:

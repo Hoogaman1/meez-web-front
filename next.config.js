@@ -6,14 +6,16 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: process.env.PROTOCOL,
+                port: process.env.PORT,
                 hostname: process.env.IMAGE_URL,
                 pathname: '/media/**'
             }
         ]
     },
     env: {
-        URL: process.env.URL
+        URL: process.env.URL,
+        IMAGE_URL: process.env.IMAGE_URL,
+        PORT: process.env.PORT
     },
     i18n
 };

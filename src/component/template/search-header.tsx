@@ -90,12 +90,6 @@ const SearchHeader = ({ background, smallText }: ComponentTypes) => {
                 </div>
                 <Button text={t('Lets go')!} extraClass='search_btn' color='primary' />
             </div>
-            <Link href='/fa' locale='fa'>
-                fa
-            </Link>
-            <Link href='/en' locale='en'>
-                en
-            </Link>
         </MainField>
     );
 };

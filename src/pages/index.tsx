@@ -30,7 +30,7 @@ export default Index;
 export async function getStaticProps({ locale }: any) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['navbar', 'footer', 'seach-header', 'common']))
+            ...(await serverSideTranslations(locale))
         }
     };
 }

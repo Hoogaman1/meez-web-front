@@ -4,6 +4,7 @@ export const InputField = styled.div({
     display: 'flex',
     flexDirection: 'column',
     gap: '5px',
+    width: '100%',
 
     label: {
         fontSize: '0.85rem'

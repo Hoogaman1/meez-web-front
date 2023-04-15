@@ -10,11 +10,12 @@ interface ComponentTypes {
     name: string;
     label?: string;
     placeHolder?: string;
+    extraClass?: string;
 }
 
-const Input = ({ handler, value, placeHolder, label, name }: ComponentTypes) => {
+const Input = ({ handler, value, placeHolder, label, name, extraClass }: ComponentTypes) => {
     return (
-        <InputField>
+        <InputField className={`${extraClass ? extraClass : ''}`}>
             {label && <label htmlFor={name}>{label}</label>}
             <input type='text' id={name} name={name} placeholder={placeHolder} onChange={e => handler(e)} value={value} />
         </InputField>

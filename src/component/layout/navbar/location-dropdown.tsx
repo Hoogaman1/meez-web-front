@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -10,11 +11,10 @@ import useOutsideClick from '@/hooks/useOutsideClick';
 import { MainField } from './location-dropdown.style';
 import Location from '../../../assets/images/icons/location.svg';
 import Angle from '../../../assets/images/icons/angle.svg';
-import { useRouter } from 'next/router';
 
 // Tools
-import Tools from '../../../utils/tools';
 import { rtlLangs } from '../../../utils/constants';
+import Tools from '../../../utils/tools';
 
 const LocationDropDown = () => {
     const ref = useRef(null);

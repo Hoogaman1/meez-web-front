@@ -63,6 +63,24 @@ export const NavBarField = styled.nav({
             width: '20px',
             height: 'auto'
         }
+    },
+
+    '& .auth_btn_group': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+
+        button: {
+            fontSize: '0.8rem',
+            minHeight: '33px',
+            padding: '0 10px'
+        },
+
+        '& .login': {
+            backgroundColor: 'white',
+            border: '1px solid #D8D9DB',
+            color: 'black'
+        }
     }
 });
 

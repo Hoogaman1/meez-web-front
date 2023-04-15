@@ -1,6 +1,9 @@
+import { useTranslation } from 'next-i18next';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/state-manager/store';
+import { loginModalStatusHandler, registerModalStatusHandler } from '../../../state-manager/reducer/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
 
 // Assets
 import { NavBarField, SubNavbarField } from './navbar.style';
@@ -13,9 +16,17 @@ import Search from '../../../assets/images/icons/search.svg';
 // Component
 import ProfileDropDown from './profile-dropdown';
 import LocationDropDown from './location-dropdown';
+import Button from '@/component/form-group/button';
+import PhoneModal from '../auth/phone';
 
 const Navbar = () => {
     const { t } = useTranslation('navbar');
+    const dispatch = useDispatch();
+    const userAuthStatus = useSelector((state: RootState) => state.UserInfo.login);
+
+    const handleOpenAuthModal = (authType: 'register' | 'login') => {
+        dispatch(authType === 'register' ? registerModalStatusHandler(true) : loginModalStatusHandler(true));
+    };
 
     return (
         <>
@@ -35,13 +46,23 @@ const Navbar = () => {
                     <LocationDropDown />
                 </div>
                 <div className='right_field'>
-                    <ProfileDropDown />
-                    <Image src={Calender} alt='' />
-                    <Image src={Notification} alt='' />
+                    {userAuthStatus ? (
+                        <>
+                            <ProfileDropDown />
+                            <Image src={Calender} alt='' />
+                            <Image src={Notification} alt='' />
+                        </>
+                    ) : (
+                        <div className='auth_btn_group'>
+                            <Button text={t('Sign up')} color='secondary' handler={() => handleOpenAuthModal('register')} />
+                            <Button text={t('Sign in')} extraClass='login' handler={() => handleOpenAuthModal('login')} />
+                        </div>
+                    )}
                     <span className='seprator'></span>
                     <Image src={Search} alt='' />
                 </div>
             </NavBarField>
+            <PhoneModal />
         </>
     );
 };

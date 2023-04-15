@@ -39,7 +39,7 @@ const ProfileDropDown = () => {
                         <Link href='/'>{t('My Dinning History')}</Link>
                     </li>
                     <li>
-                        <Link href='/'>{t('My Save Resturants')}</Link>
+                        <Link href='/user/favorits'>{t('My Save Resturants')}</Link>
                     </li>
                     <li>
                         <Link href='/'>{t('Sign Out')}</Link>

@@ -3,19 +3,21 @@ import { createSlice } from '@reduxjs/toolkit';
 export const utilsReducer = createSlice({
     name: 'utils',
     initialState: {
-        loginModalStatus: false,
-        RegisterModalStatus: false
+        authModalStatus: {
+            status: false,
+            type: ''
+        }
     },
     reducers: {
-        loginModalStatusHandler: (state, action) => {
-            state.loginModalStatus = action.payload;
-        },
-        registerModalStatusHandler: (state, action) => {
-            state.RegisterModalStatus = action.payload;
+        authModalStatusHandler: (state, action) => {
+            state.authModalStatus = {
+                status: action.payload.status,
+                type: action.payload.type
+            };
         }
     }
 });
 
-export const { loginModalStatusHandler, registerModalStatusHandler } = utilsReducer.actions;
+export const { authModalStatusHandler } = utilsReducer.actions;
 
 export default utilsReducer.reducer;

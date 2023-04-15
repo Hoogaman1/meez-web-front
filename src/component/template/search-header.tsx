@@ -22,7 +22,6 @@ import { useRouter } from 'next/router';
 
 // Utils
 import { rtlLangs } from '../../utils/constants';
-import Link from 'next/link';
 
 // Types
 interface ComponentTypes {

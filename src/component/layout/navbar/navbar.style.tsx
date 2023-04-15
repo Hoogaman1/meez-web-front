@@ -8,6 +8,7 @@ export const NavBarField = styled.nav({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 20px',
+    borderBottom: '1px solid #EBEBEB',
 
     '& .logo': {
         width: '120px',
@@ -62,6 +63,11 @@ export const NavBarField = styled.nav({
         img: {
             width: '20px',
             height: 'auto'
+        },
+
+        a: {
+            display: 'flex',
+            alignItems: 'center'
         }
     },
 

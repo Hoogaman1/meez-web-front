@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginModalStatusHandler, registerModalStatusHandler } from '../../../state-manager/reducer/utils';
+import { authModalStatusHandler } from '../../../state-manager/reducer/utils';
 import { useTranslation } from 'next-i18next';
 import { RootState } from '@/state-manager/store';
 
@@ -36,8 +36,7 @@ const PhoneModal = () => {
     const { locale } = useRouter();
     const { t } = useTranslation('auth');
     const dispatch = useDispatch();
-    const LoginModalStatus = useSelector((state: RootState) => state.Utils.loginModalStatus);
-    const registerModalStatus = useSelector((state: RootState) => state.Utils.RegisterModalStatus);
+    const LoginModalStatus = useSelector((state: RootState) => state.Utils.authModalStatus);
     const [varifyModalStatus, setVerifyModalStatus] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<inputValueTypes>({
@@ -47,8 +46,12 @@ const PhoneModal = () => {
     });
 
     const closeModalHandler = () => {
-        dispatch(registerModalStatusHandler(false));
-        dispatch(loginModalStatusHandler(false));
+        dispatch(
+            authModalStatusHandler({
+                ...LoginModalStatus,
+                status: false
+            })
+        );
     };
 
     const submitHandler = () => {
@@ -56,8 +59,7 @@ const PhoneModal = () => {
         setLoading(true);
         OTP(phoneNumber)
             .then(() => {
-                dispatch(registerModalStatusHandler(false));
-                dispatch(loginModalStatusHandler(false));
+                closeModalHandler();
                 setVerifyModalStatus(true);
             })
             .catch(() => {})
@@ -68,14 +70,7 @@ const PhoneModal = () => {
 
     return (
         <>
-            <Dialog
-                open={LoginModalStatus || registerModalStatus}
-                keepMounted
-                onClose={closeModalHandler}
-                fullWidth={true}
-                scroll='body'
-                maxWidth='xs'
-            >
+            <Dialog open={LoginModalStatus.status} keepMounted onClose={closeModalHandler} fullWidth={true} scroll='body' maxWidth='xs'>
                 <PhoneField lang={locale!} rtlLangs={rtlLangs}>
                     <h3>{t('Enter your phone number')}</h3>
                     <p>{t('You will receive a text message to verify your account. Message & data rates may apply.')}</p>
@@ -139,7 +134,11 @@ const PhoneModal = () => {
                     </div>
                 </PhoneField>
             </Dialog>
-            <OTPModal status={varifyModalStatus} statusHandler={setVerifyModalStatus} />
+            <OTPModal
+                status={varifyModalStatus}
+                statusHandler={setVerifyModalStatus}
+                phoneNumber={inputValue.phoneCode.replace('+', '') + inputValue.phoneNumber}
+            />
         </>
     );
 };

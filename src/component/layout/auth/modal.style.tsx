@@ -121,3 +121,30 @@ export const OTPField = styled.div<OTPFieldTypes>(props => ({
         }
     }
 }));
+
+export const UserInfoField = styled.div<OTPFieldTypes>(props => ({
+    width: '100%',
+    padding: '40px 20px',
+    textAlign: props.lang in props.rtlLangs ? 'right' : 'left',
+
+    h3: {
+        marginBottom: '20px',
+        fontSize: '1.2rem'
+    },
+
+    p: {
+        marginBottom: '30px'
+    },
+
+    input: {
+        marginBottom: '20px'
+    },
+
+    '& .modal_footer': {
+        marginTop: '10px',
+
+        button: {
+            width: '100%'
+        }
+    }
+}));

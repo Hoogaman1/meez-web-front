@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/state-manager/store';
-import { loginModalStatusHandler, registerModalStatusHandler } from '../../../state-manager/reducer/utils';
+import { authModalStatusHandler } from '../../../state-manager/reducer/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,7 +25,12 @@ const Navbar = () => {
     const userAuthStatus = useSelector((state: RootState) => state.UserInfo.login);
 
     const handleOpenAuthModal = (authType: 'register' | 'login') => {
-        dispatch(authType === 'register' ? registerModalStatusHandler(true) : loginModalStatusHandler(true));
+        dispatch(
+            authModalStatusHandler({
+                status: true,
+                type: authType
+            })
+        );
     };
 
     return (
@@ -50,7 +55,9 @@ const Navbar = () => {
                         <>
                             <ProfileDropDown />
                             <Image src={Calender} alt='' />
-                            <Image src={Notification} alt='' />
+                            <Link href='/user/notification'>
+                                <Image src={Notification} alt='' />
+                            </Link>
                         </>
                     ) : (
                         <div className='auth_btn_group'>

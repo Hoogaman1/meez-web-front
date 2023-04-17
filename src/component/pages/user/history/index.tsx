@@ -10,10 +10,10 @@ import MocImage from '../../../../assets/images/card-slider-moc/1.jpg';
 // Component
 import Button from '@/component/form-group/button';
 
-const UserFavoritsList = () => {
+const UserHistory = () => {
     return (
         <MainField>
-            <h3>لیست علاقه مندی های من</h3>
+            <h3>تاریخچه رزرو</h3>
             <ol>
                 <li>
                     <div className='left_field'>
@@ -43,7 +43,7 @@ const UserFavoritsList = () => {
                         </div>
                     </div>
                     <Link href='/'>
-                        <Button text='رزرو رستوران' />
+                        <Button text='رزرو مجدد' />
                     </Link>
                 </li>
                 <li>
@@ -74,7 +74,7 @@ const UserFavoritsList = () => {
                         </div>
                     </div>
                     <Link href='/'>
-                        <Button text='رزرو رستوران' />
+                        <Button text='رزرو مجدد' />
                     </Link>
                 </li>
                 <li>
@@ -105,7 +105,7 @@ const UserFavoritsList = () => {
                         </div>
                     </div>
                     <Link href='/'>
-                        <Button text='رزرو رستوران' />
+                        <Button text='رزرو مجدد' />
                     </Link>
                 </li>
                 <li>
@@ -136,7 +136,7 @@ const UserFavoritsList = () => {
                         </div>
                     </div>
                     <Link href='/'>
-                        <Button text='رزرو رستوران' />
+                        <Button text='رزرو مجدد' />
                     </Link>
                 </li>
                 <li>
@@ -167,7 +167,7 @@ const UserFavoritsList = () => {
                         </div>
                     </div>
                     <Link href='/'>
-                        <Button text='رزرو رستوران' />
+                        <Button text='رزرو مجدد' />
                     </Link>
                 </li>
                 <li>
@@ -198,7 +198,7 @@ const UserFavoritsList = () => {
                         </div>
                     </div>
                     <Link href='/'>
-                        <Button text='رزرو رستوران' />
+                        <Button text='رزرو مجدد' />
                     </Link>
                 </li>
             </ol>
@@ -206,4 +206,4 @@ const UserFavoritsList = () => {
     );
 };
 
-export default UserFavoritsList;
+export default UserHistory;

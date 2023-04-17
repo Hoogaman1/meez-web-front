@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // Components
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import LayoutProvider from '@/component/layout/provider';
 import SearchHeader from '@/component/template/search-header';
 import CardSLider from '@/component/template/card-slider';

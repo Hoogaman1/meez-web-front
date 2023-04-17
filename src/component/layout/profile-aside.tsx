@@ -11,8 +11,8 @@ const ProfileAside = () => {
         <AsideField>
             <ul>
                 <li>
-                    <Link href='/dining-dashboard' className={`${router.pathname.includes('dining-dashboard') ? 'active' : ''}`}>
-                        رزرو های نزدیک
+                    <Link href='/user/history' className={`${router.pathname.includes('history') ? 'active' : ''}`}>
+                        تاریخچه
                     </Link>
                 </li>
                 <li>

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userReducer = createSlice({
     name: 'userInfo',
     initialState: {
-        login: typeof window !== 'undefined' && localStorage.getItem('accessToken') !== null ? false : false
+        login: typeof window !== 'undefined' && localStorage.getItem('accessToken') !== null ? true : true
     },
     reducers: {
         authStateHandler: (state, action) => {

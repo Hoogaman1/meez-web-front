@@ -14,7 +14,10 @@ export const PhoneField = styled.div<PhoneFieldPropsType>(props => ({
     width: '100%',
     padding: '40px 20px',
     textAlign: props.lang in props.rtlLangs ? 'right' : 'left',
-    minHeight: '400px',
+
+    '& .MuiPaper-root': {
+        overflow: 'unset'
+    },
 
     h3: {
         marginBottom: '20px',
@@ -148,3 +151,9 @@ export const UserInfoField = styled.div<OTPFieldTypes>(props => ({
         }
     }
 }));
+
+export const ModalField = styled.div({
+    '& .MuiPaper-root': {
+        overflow: 'unset'
+    }
+});

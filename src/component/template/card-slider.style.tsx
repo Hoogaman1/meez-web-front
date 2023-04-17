@@ -76,7 +76,7 @@ export const SliderField = styled.section<SliderFieldpropsTypes>(props => ({
     }
 }));
 
-export const CardField = styled.div({
+export const CardField = styled.div(props => ({
     border: '1px solid #D8D9DB',
     borderRadius: '5px',
     overflow: 'hidden',
@@ -89,7 +89,17 @@ export const CardField = styled.div({
 
     h5: {
         color: '#2D333F',
-        fontSize: '1.125rem'
+        fontSize: '1.125rem',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+
+        img: {
+            width: '18px',
+            height: 'auto',
+            filter: 'invert(92%) sepia(0%) saturate(564%) hue-rotate(248deg) brightness(98%) contrast(88%)'
+        }
     },
 
     p: {
@@ -125,56 +135,27 @@ export const CardField = styled.div({
         }
     },
 
-    '& .info': {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '5px',
-
-        img: {
-            width: '10px',
-            height: 'auto'
-        },
-
-        '& .blur': {
-            opacity: '0.4'
-        },
-
-        '& .seprator': {
-            width: '5px',
-            height: '5px',
-            display: 'block',
-            backgroundColor: '#2a2a2a',
-            borderRadius: '5px'
-        },
-
-        '& .image_field': {
-            display: 'flex',
-            alignItems: 'center'
-        }
-    },
-
-    '& .booked_field': {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '5px',
-        color: '#2a2a2a',
-        fontSize: '0.9rem',
-
-        img: {
-            width: '20px',
-            height: 'auto'
-        }
-    },
-
     '& .button_group': {
         display: 'flex',
         gap: '5px',
         marginTop: '10px',
 
-        button: {
-            fontWeight: 'bold',
+        div: {
             padding: '5px 10px',
-            height: '30px'
+            height: '30px',
+            width: '100%',
+            fontSize: '0.8rem',
+            border: '1px solid #ededed',
+            borderRadius: '5px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#838383'
+        },
+
+        '& .active': {
+            backgroundColor: props.theme.colors.primary,
+            color: 'white'
         }
     }
-});
+}));

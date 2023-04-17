@@ -10,16 +10,12 @@ import { SliderField, CardField } from './card-slider.style';
 import BG1 from '../../assets/images/card-slider-moc/1.jpg';
 import Star from '../../assets/images/icons/star.svg';
 import HalfStar from '../../assets/images/icons/half-star.svg';
-import Pound from '../../assets/images/icons/pound.svg';
-import Resize from '../../assets/images/icons/resize.svg';
+import BookMark from '../../assets/images/icons/bookmark.svg';
 import 'swiper/css';
 import 'swiper/css/bundle';
 
 // Utils
 import Tools from '../../utils/tools';
-
-// Component
-import Button from '../form-group/button';
 
 // Utils
 import { rtlLangs } from '../../utils/constants';
@@ -66,7 +62,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -77,27 +76,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -108,7 +90,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -119,27 +104,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div>اقتصادی</div>
+                                        <div className='active'>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -150,7 +118,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -161,27 +132,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div className='active'>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -192,7 +146,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -203,27 +160,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -234,7 +174,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -245,27 +188,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -276,7 +202,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -287,27 +216,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -318,7 +230,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -329,27 +244,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
-                                    </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
-                                    </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>
@@ -360,7 +258,10 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                             <Link href=''>
                                 <Image src={BG1} alt='' />
                                 <div className='content'>
-                                    <h5>رستوران ارکیده</h5>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
                                     <div className='star'>
                                         <Image src={Star} alt='' />
                                         <Image src={Star} alt='' />
@@ -371,27 +272,66 @@ const CardSLider = ({ heading }: ComponentTypes) => {
                                             {Tools.numberLangChanger('13', locale!)} {t('review')}
                                         </p>
                                     </div>
-                                    <div className='info'>
-                                        <small>کافه</small>
-                                        <span className='seprator'></span>
-                                        <div className='image_field'>
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                            <Image src={Pound} alt='' className='blur' />
-                                        </div>
-                                        <span className='seprator'></span>
-                                        <small>کوی فراز</small>
+                                    <div className='button_group'>
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
-                                    <div className='booked_field'>
-                                        <Image src={Resize} alt='' />
-                                        امروز {Tools.numberLangChanger('56', locale!)} بار رزرو شده است
+                                </div>
+                            </Link>
+                        </CardField>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <CardField>
+                            <Link href=''>
+                                <Image src={BG1} alt='' />
+                                <div className='content'>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
+                                    <div className='star'>
+                                        <Image src={Star} alt='' />
+                                        <Image src={Star} alt='' />
+                                        <Image src={Star} alt='' />
+                                        <Image src={Star} alt='' />
+                                        <Image src={HalfStar} alt='' className='half_star' />
+                                        <p>
+                                            {Tools.numberLangChanger('13', locale!)} {t('review')}
+                                        </p>
                                     </div>
                                     <div className='button_group'>
-                                        <Button text={Tools.numberLangChanger('13:30', locale!)} />
-                                        <Button text={Tools.numberLangChanger('14:00', locale!)} />
-                                        <Button text={Tools.numberLangChanger('23:30', locale!)} />
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
+                                    </div>
+                                </div>
+                            </Link>
+                        </CardField>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <CardField>
+                            <Link href=''>
+                                <Image src={BG1} alt='' />
+                                <div className='content'>
+                                    <h5>
+                                        رستوران ارکیده <Image src={BookMark} alt='' />
+                                    </h5>
+                                    <small>کوی فراز</small>
+                                    <div className='star'>
+                                        <Image src={Star} alt='' />
+                                        <Image src={Star} alt='' />
+                                        <Image src={Star} alt='' />
+                                        <Image src={Star} alt='' />
+                                        <Image src={HalfStar} alt='' className='half_star' />
+                                        <p>
+                                            {Tools.numberLangChanger('13', locale!)} {t('review')}
+                                        </p>
+                                    </div>
+                                    <div className='button_group'>
+                                        <div className='active'>اقتصادی</div>
+                                        <div>نرمال</div>
+                                        <div>ویژه</div>
                                     </div>
                                 </div>
                             </Link>

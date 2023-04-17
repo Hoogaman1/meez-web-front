@@ -62,7 +62,8 @@ export const NavBarField = styled.nav({
 
         img: {
             width: '20px',
-            height: 'auto'
+            height: 'auto',
+            cursor: 'pointer'
         },
 
         a: {

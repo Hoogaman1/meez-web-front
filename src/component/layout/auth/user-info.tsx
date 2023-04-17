@@ -65,7 +65,7 @@ const UserInfoModal = ({ status, statusHandler, phoneNumber }: ComponentType) =>
         <>
             <Dialog open={status} keepMounted onClose={() => statusHandler(false)} fullWidth={true} scroll='body' maxWidth='xs'>
                 <UserInfoField lang={locale!} rtlLangs={rtlLangs}>
-                    <h3>{t("Verify it's you")}</h3>
+                    <h3>مشخصات خود را وارد کنید</h3>
                     <p>ما یک کد به شماره موبایل شما ارسال کردیم ، برای ادامه کد را وارد کنید .</p>
                     <Input handler={e => getInputValue(e)} name='email' value={inputValue.email} label='ایمیل' />
                     <Input handler={e => getInputValue(e)} name='name' value={inputValue.name} label='نام' />

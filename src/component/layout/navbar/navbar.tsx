@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/state-manager/store';
 import { authModalStatusHandler } from '../../../state-manager/reducer/utils';
@@ -18,11 +19,13 @@ import ProfileDropDown from './profile-dropdown';
 import LocationDropDown from './location-dropdown';
 import Button from '@/component/form-group/button';
 import PhoneModal from '../auth/phone';
+import SearchModal from './search-modal';
 
 const Navbar = () => {
     const { t } = useTranslation('navbar');
     const dispatch = useDispatch();
     const userAuthStatus = useSelector((state: RootState) => state.UserInfo.login);
+    const [searchModalStatus, setSearchModalStatus] = useState<boolean>(false);
 
     const handleOpenAuthModal = (authType: 'register' | 'login') => {
         dispatch(
@@ -66,10 +69,11 @@ const Navbar = () => {
                         </div>
                     )}
                     <span className='seprator'></span>
-                    <Image src={Search} alt='' />
+                    <Image src={Search} alt='' onClick={() => setSearchModalStatus(true)} />
                 </div>
             </NavBarField>
             <PhoneModal />
+            <SearchModal status={searchModalStatus} handler={setSearchModalStatus} />
         </>
     );
 };

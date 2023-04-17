@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next';
 import { RootState } from '@/state-manager/store';
 
 // Assets
-import { PhoneField } from './modal.style';
+import { PhoneField, ModalField } from './modal.style';
 
 // MUI
 import Dialog from '@mui/material/Dialog';
@@ -70,70 +70,80 @@ const PhoneModal = () => {
 
     return (
         <>
-            <Dialog open={LoginModalStatus.status} keepMounted onClose={closeModalHandler} fullWidth={true} scroll='body' maxWidth='xs'>
-                <PhoneField lang={locale!} rtlLangs={rtlLangs}>
-                    <h3>{t('Enter your phone number')}</h3>
-                    <p>{t('You will receive a text message to verify your account. Message & data rates may apply.')}</p>
+            <ModalField>
+                <Dialog
+                    open={LoginModalStatus.status}
+                    keepMounted
+                    onClose={closeModalHandler}
+                    fullWidth={true}
+                    scroll='body'
+                    maxWidth='xs'
+                    disablePortal
+                >
+                    <PhoneField lang={locale!} rtlLangs={rtlLangs}>
+                        <h3>{t('Enter your phone number')}</h3>
+                        <p>{t('You will receive a text message to verify your account. Message & data rates may apply.')}</p>
 
-                    <div className='input_field'>
-                        <img
-                            className='selected_image'
-                            src={`https://flagcdn.com/w20/${inputValue.countryCode.toLowerCase()}.png`}
-                            alt=''
-                        />
-                        <Autocomplete
-                            sx={{ width: 200 }}
-                            options={countries}
-                            autoHighlight
-                            disablePortal
-                            disableClearable
-                            onChange={(e, value) => {
-                                setInputValue({
-                                    ...inputValue,
-                                    phoneCode: value.phone,
-                                    countryCode: value.code
-                                });
-                            }}
-                            getOptionLabel={option => `+${option.phone}`}
-                            renderOption={(props, option) => (
-                                <Box component='li' sx={{ '& > img': { mr: 1, flexShrink: 0 } }} {...props}>
-                                    <img
-                                        loading='lazy'
-                                        width='20'
-                                        src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-                                        alt=''
+                        <div className='input_field'>
+                            <img
+                                className='selected_image'
+                                src={`https://flagcdn.com/w20/${inputValue.countryCode.toLowerCase()}.png`}
+                                alt=''
+                            />
+                            <Autocomplete
+                                sx={{ width: 200 }}
+                                options={countries}
+                                autoHighlight
+                                disablePortal
+                                disableClearable
+                                onChange={(e, value) => {
+                                    setInputValue({
+                                        ...inputValue,
+                                        phoneCode: value.phone,
+                                        countryCode: value.code
+                                    });
+                                }}
+                                getOptionLabel={option => `+${option.phone}`}
+                                renderOption={(props, option) => (
+                                    <Box component='li' sx={{ '& > img': { mr: 1, flexShrink: 0 } }} {...props}>
+                                        <img
+                                            loading='lazy'
+                                            width='20'
+                                            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                                            alt=''
+                                        />
+                                        <span style={{ fontSize: '0.8rem' }}>
+                                            {option.label} - +{option.phone}
+                                        </span>
+                                    </Box>
+                                )}
+                                renderInput={params => (
+                                    <TextField
+                                        {...params}
+                                        inputProps={{
+                                            ...params.inputProps
+                                        }}
                                     />
-                                    <span style={{ fontSize: '0.8rem' }}>
-                                        {option.label} - +{option.phone}
-                                    </span>
-                                </Box>
-                            )}
-                            renderInput={params => (
-                                <TextField
-                                    {...params}
-                                    inputProps={{
-                                        ...params.inputProps
-                                    }}
-                                />
-                            )}
-                        />
-                        <Input
-                            handler={e =>
-                                setInputValue({
-                                    ...inputValue,
-                                    phoneNumber: e.target.value
-                                })
-                            }
-                            name='phone'
-                            value={inputValue.phoneNumber}
-                            placeHolder='شماره موبایل'
-                        />
-                    </div>
-                    <div className='modal_footer'>
-                        <Button text={t('Continue')} handler={submitHandler} loading={loading} />
-                    </div>
-                </PhoneField>
-            </Dialog>
+                                )}
+                            />
+                            <Input
+                                handler={e =>
+                                    setInputValue({
+                                        ...inputValue,
+                                        phoneNumber: e.target.value
+                                    })
+                                }
+                                name='phone'
+                                value={inputValue.phoneNumber}
+                                placeHolder='شماره موبایل'
+                            />
+                        </div>
+                        <div className='modal_footer'>
+                            <Button text={t('Continue')} handler={submitHandler} loading={loading} />
+                        </div>
+                    </PhoneField>
+                </Dialog>
+            </ModalField>
             <OTPModal
                 status={varifyModalStatus}
                 statusHandler={setVerifyModalStatus}

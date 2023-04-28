@@ -32,7 +32,7 @@ function a11yProps(index: number) {
     };
 }
 
-const HotelInfo = () => {
+const HotelInfo = (props) => {
     const [menuValue, setMenuValue] = useState(0);
 
     const menuValuehandler = (e: any, newValue: number) => {
@@ -48,6 +48,7 @@ const HotelInfo = () => {
         setMenuValue(newValue);
     };
 
+
     return (
         <MainField>
             <div className='tabs_field'>
@@ -59,7 +60,7 @@ const HotelInfo = () => {
                     </Tabs>
                 </Box>
                 <TabPanel value={menuValue} index={0}>
-                    <HotelAbout />
+                    <HotelAbout data={props.data} />
                 </TabPanel>
                 <TabPanel value={menuValue} index={1}>
                     منو

@@ -10,10 +10,33 @@ import HotelAside from '@/component/pages/hotel/aside';
 import HotelInfo from '@/component/pages/hotel/info';
 import LayoutProvider from '@/component/layout/provider';
 
+import React, { useState, useEffect } from 'react';
+
 // MUI
 import Button from '@mui/material/Button';
 
+
+
+
+
 const HotelPage = () => {
+    const [mainData, setMainData] = useState("");
+
+    useEffect(() => {
+
+        (async () => {
+            let indexArray = window.location.pathname.match(/\/hotel\/(\d+)/)[1]
+            try {
+                const res = await fetch(`/api/s`)
+                let f = await res.json()
+                setMainData(f[indexArray])
+            } catch (err) {
+                console.log(err)
+            }
+        })()
+
+    }, [])
+
     return (
         <LayoutProvider>
             <HotelHeaderField image={MocImage.src}>
@@ -24,7 +47,7 @@ const HotelPage = () => {
             </HotelHeaderField>
             <HotelPageMainField className='container'>
                 <HotelAside />
-                <HotelInfo />
+                <HotelInfo data={mainData} />
             </HotelPageMainField>
         </LayoutProvider>
     );

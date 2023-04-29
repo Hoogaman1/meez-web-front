@@ -9,10 +9,29 @@ import { MainField } from './info.style';
 import HotelAbout from './about';
 import HotelComments from './comments';
 
+import PropTypes from 'prop-types';
+
 interface TabPanelProps {
     children?: ReactNode;
     index: number;
     value: number;
+}
+
+interface Data{
+    name: string;
+    description: string;
+    min_price: number;
+    address: string;
+    breakfast_start: string;
+    breakfast_end: string;
+    lunch_start: string;
+    lunch_end: string;
+    dinner_start: string;
+    dinner_end: string;
+}
+
+interface HotelInfoProps {
+    data: Data;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -32,7 +51,7 @@ function a11yProps(index: number) {
     };
 }
 
-const HotelInfo = (props) => {
+const HotelInfo = (props: HotelInfoProps) => {
     const [menuValue, setMenuValue] = useState(0);
 
     const menuValuehandler = (e: any, newValue: number) => {
@@ -71,6 +90,10 @@ const HotelInfo = (props) => {
             </div>
         </MainField>
     );
+};
+
+HotelInfo.propTypes = {
+    data: PropTypes.array.isRequired,
 };
 
 export default HotelInfo;

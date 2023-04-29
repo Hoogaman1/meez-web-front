@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/state-manager/store';
 import { authModalStatusHandler } from '../../../state-manager/reducer/utils';
@@ -21,11 +21,22 @@ import Button from '@/component/form-group/button';
 import PhoneModal from '../auth/phone';
 import SearchModal from './search-modal';
 
+import { getInfo } from '@/api-request/getinfo';
+
+
 const Navbar = () => {
     const { t } = useTranslation('navbar');
-    const dispatch = useDispatch();
     const userAuthStatus = useSelector((state: RootState) => state.UserInfo.login);
     const [searchModalStatus, setSearchModalStatus] = useState<boolean>(false);
+    const [userInfo , setUserInfo] = useState<any>({});
+    const dispatch = useDispatch();
+    const getInfoUser = useSelector((state: any) => {
+        return state.UserID.userID
+    });
+    const statusLogin = useSelector((state: any) => {
+        return state.UserInfo.login
+    });
+    // const error = useSelector((state: any) => state.app.error);
 
     const handleOpenAuthModal = (authType: 'register' | 'login') => {
         dispatch(
@@ -35,6 +46,18 @@ const Navbar = () => {
             })
         );
     };
+
+    useEffect(() => {
+        if (userAuthStatus) {
+            getInfo(getInfoUser)
+                .then((data) => {
+                    setUserInfo(data)
+                })
+                .catch((err) => console.log(err))
+        }
+    }, [])
+
+
 
     return (
         <>
@@ -56,18 +79,18 @@ const Navbar = () => {
                 <div className='right_field'>
                     {userAuthStatus ? (
                         <>
-                            <ProfileDropDown />
+                            <ProfileDropDown data={userInfo}/>
                             <Image src={Calender} alt='' />
                             <Link href='/user/notification'>
                                 <Image src={Notification} alt='' />
                             </Link>
                         </>
                     ) : (
-                        <div className='auth_btn_group'>
-                            <Button text={t('Sign up')} color='secondary' handler={() => handleOpenAuthModal('register')} />
-                            <Button text={t('Sign in')} extraClass='login' handler={() => handleOpenAuthModal('login')} />
-                        </div>
-                    )}
+                            <div className='auth_btn_group'>
+                                <Button text={t('Sign up')} color='secondary' handler={() => handleOpenAuthModal('register')} />
+                                <Button text={t('Sign in')} extraClass='login' handler={() => handleOpenAuthModal('login')} />
+                            </div>
+                        )}
                     <span className='seprator'></span>
                     <Image src={Search} alt='' onClick={() => setSearchModalStatus(true)} />
                 </div>
@@ -77,5 +100,9 @@ const Navbar = () => {
         </>
     );
 };
+
+// /pages/index.js
+
+
 
 export default Navbar;

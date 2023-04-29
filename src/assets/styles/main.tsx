@@ -15,6 +15,14 @@ export const HotelPageMainField = styled.div({
     zIndex: '11'
 });
 
+export const DashbordPageMainField = styled.div({
+    display: 'flex',
+    gap: '30px',
+    margin: '50px auto !important',
+    position: 'relative',
+    zIndex: '0'
+});
+
 export const HotelHeaderField = styled.div<{ image: string }>(props => ({
     width: '100%',
     backgroundImage: `url(${props.image})`,

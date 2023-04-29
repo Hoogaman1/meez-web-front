@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/state-manager/store';
 
 // Assets
@@ -22,13 +22,29 @@ import { rtlLangs } from '../../../utils/constants';
 // API
 import { Login } from '@/api-request/auth';
 
+
+import {authStateHandler} from '../../../state-manager/reducer/user'
+import {userIDHandler} from '../../../state-manager/reducer/getUser'
+
 const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; statusHandler: Function; phoneNumber: string }) => {
+    const dispatch = useDispatch();
     const { locale } = useRouter();
     const { t } = useTranslation('auth');
     const LoginModalStatus = useSelector((state: RootState) => state.Utils.authModalStatus);
     const [loading, setLoading] = useState<boolean>(false);
     const [OTPValue, setOTPValue] = useState<string>('');
     const [userInfoModalStatus, setUserInfoModalStatus] = useState<boolean>(false);
+    
+    function setCookie(name: string, value: string, days: number) {
+        let expires = "";
+        if (days) {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
 
     const submitHandler = () => {
         setLoading(true);
@@ -37,8 +53,15 @@ const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; sta
             setUserInfoModalStatus(true);
         } else {
             Login(phoneNumber, OTPValue)
-                .then(() => {})
-                .catch(() => {})
+                .then((data) => {
+                    setCookie("token", data.data.token , 7);
+                    dispatch(userIDHandler(data.data.id))
+                    dispatch(authStateHandler(true))
+                    statusHandler(false)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
                 .finally(() => {
                     setLoading(false);
                 });

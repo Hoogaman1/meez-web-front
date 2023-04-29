@@ -20,6 +20,11 @@ import { rtlLangs } from '../../../utils/constants';
 import { Register } from '@/api-request/auth';
 
 // Types
+
+import {userIDHandler} from '../../../state-manager/reducer/getUser'
+import {useDispatch } from 'react-redux';
+
+
 interface ComponentType {
     status: boolean;
     statusHandler: Function;
@@ -34,6 +39,7 @@ interface InputTypes {
 }
 
 const UserInfoModal = ({ status, statusHandler, phoneNumber }: ComponentType) => {
+
     const { locale } = useRouter();
     const { t } = useTranslation('auth');
     const [loading, setLoading] = useState<boolean>(false);
@@ -44,20 +50,39 @@ const UserInfoModal = ({ status, statusHandler, phoneNumber }: ComponentType) =>
         name: ''
     });
 
+    const dispatch = useDispatch();
+
+    function setCookie(name: string, value: string, days: number) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
     const submitHandler = () => {
         setLoading(true);
         Register(inputValue)
-            .then(() => {})
-            .catch(() => {})
+            .then((data) => {
+                console.log(data)
+                setCookie("token", data.data.token, 7);
+                dispatch(userIDHandler(data.data.id));
+            })
+            .catch(() => { })
             .finally(() => {
                 setLoading(false);
             });
+        
+        statusHandler(false);
     };
 
     const getInputValue = (e: any) => {
         setInputValue({
             ...inputValue,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            phone: phoneNumber
         });
     };
 

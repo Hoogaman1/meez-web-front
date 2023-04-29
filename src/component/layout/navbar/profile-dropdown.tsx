@@ -10,7 +10,32 @@ import Avatar from '../../../assets/images/icons/avatar.svg';
 // Hook
 import useOutsideClick from '../../../hooks/useOutsideClick';
 
-const ProfileDropDown = () => {
+import {useEffect} from "react"
+
+// interface Data {
+//     phone: string;
+//     user: number;
+//     email: string;
+//     name: string;
+//     img: string;
+//     create_time: string;
+//     update_time: string;
+//     suspend: boolean;
+//     is_client: boolean;
+//     is_supplier: boolean;
+//     surname: string;
+//     point: number;
+//     news: boolean;
+//     offer: boolean;
+//     sms: boolean;
+// }
+
+
+// interface ComponentTypes {
+//     data: Data
+// }
+
+const ProfileDropDown = (data: any) => {
     const ref = useRef(null);
     const { t } = useTranslation('navbar');
     const [menuStatus, setMenuStatus] = useState('');
@@ -22,6 +47,10 @@ const ProfileDropDown = () => {
         }
     };
 
+    useEffect(() => {
+        console.log(data)
+    } , [data])
+
     useOutsideClick(ref, menuStatus === 'profile', () => {
         openMenu('');
     });
@@ -30,10 +59,10 @@ const ProfileDropDown = () => {
         <MainField ref={ref}>
             <Image src={Avatar} alt='' className='avatar' onClick={() => openMenu('profile')} />
             <div className={`drop_down ${menuStatus === 'profile' ? 'show' : ''}`}>
-                <h3>{t('Hello')}، نادیه !</h3>
+                <h3>{t('Hello')}، {data.data.name}</h3>
                 <ul>
                     <li>
-                        <Link href='/'>{t('My Profile')}</Link>
+                        <Link href='/user/dashbord'>{t('My Profile')}</Link>
                     </li>
                     <li>
                         <Link href='/'>{t('My Dinning History')}</Link>

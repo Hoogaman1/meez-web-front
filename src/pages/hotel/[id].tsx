@@ -10,32 +10,40 @@ import HotelAside from '@/component/pages/hotel/aside';
 import HotelInfo from '@/component/pages/hotel/info';
 import LayoutProvider from '@/component/layout/provider';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // MUI
 import Button from '@mui/material/Button';
 
-
-
-
-
 const HotelPage = () => {
-    const [mainData, setMainData] = useState("");
+    const [mainData, setMainData] = useState({
+        name: "",
+        description: "",
+        min_price: 1,
+        address: "",
+        breakfast_start: "",
+        breakfast_end: "",
+        lunch_start: "",
+        lunch_end: "",
+        dinner_start: "",
+        dinner_end: ""
+    });
 
     useEffect(() => {
-
         (async () => {
-            let indexArray = window.location.pathname.match(/\/hotel\/(\d+)/)[1]
-            try {
-                const res = await fetch(`/api/s`)
-                let f = await res.json()
-                setMainData(f[indexArray])
-            } catch (err) {
-                console.log(err)
-            }
-        })()
+            let indexArray = window.location.pathname.match(/\/hotel\/(\d+)/);
 
-    }, [])
+            if(indexArray){
+                try {
+                    const res = await fetch('/api/s');
+                    let f = await res.json();
+                    setMainData(f[indexArray[1]]);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        })();
+    }, []);
 
     return (
         <LayoutProvider>

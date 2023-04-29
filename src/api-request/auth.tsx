@@ -9,7 +9,7 @@ interface RegisterType {
 }
 
 export const Register = async (data: RegisterType) => {
-    return RequestHandler.post('/MASTER/phone/', data).then(res => res.data);
+    return RequestHandler.post('/MASTER/register-client/', data).then(res => res.data);
 };
 
 export const Login = async (phone: string, activate_code: string) => {

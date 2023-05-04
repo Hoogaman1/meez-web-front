@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/state-manager/store';
 import { authModalStatusHandler } from '../../../state-manager/reducer/utils';
@@ -26,6 +26,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const userAuthStatus = useSelector((state: RootState) => state.UserInfo.login);
     const [searchModalStatus, setSearchModalStatus] = useState<boolean>(false);
+    // const userAuthStatus = useState<boolean>(false);
 
     const handleOpenAuthModal = (authType: 'register' | 'login') => {
         dispatch(

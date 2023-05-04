@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/state-manager/store';
+import { redirect } from 'next/navigation';
 
 // Assets
 import { OTPField } from './modal.style';
@@ -22,7 +23,16 @@ import { rtlLangs } from '../../../utils/constants';
 // API
 import { Login } from '@/api-request/auth';
 
+
+//authentication
+import useAuth from '../../../hooks/useAuth';
+
+
 const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; statusHandler: Function; phoneNumber: string }) => {
+
+
+    const { setAuth } : any = useAuth();
+
     const { locale } = useRouter();
     const { t } = useTranslation('auth');
     const LoginModalStatus = useSelector((state: RootState) => state.Utils.authModalStatus);
@@ -37,7 +47,11 @@ const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; sta
             setUserInfoModalStatus(true);
         } else {
             Login(phoneNumber, OTPValue)
-                .then(() => {})
+                .then((res) => {
+                    // localStorage.setItem("accessToken",res.data.token);
+                    const accessToken   =   res.data.token;
+                    setAuth({ accessToken });
+                })
                 .catch(() => {})
                 .finally(() => {
                     setLoading(false);

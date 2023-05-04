@@ -18,6 +18,7 @@ import '../assets/styles/globals/general.css';
 
 // Utils
 import { rtlLangs } from '../utils/constants';
+import { AuthProvider } from '@/context/AuthProvider';
 
 NProgress.configure({
     minimum: 0.3,
@@ -34,26 +35,28 @@ const App = ({ Component, pageProps }: AppProps) => {
     const { locale } = useRouter();
     const [direction, setDirection] = useState<'ltr' | 'rtl'>('rtl');
     const darkModeTheme = createTheme({ direction: direction }, theme());
-
+    
     useEffect(() => {
         setDirection(locale! in rtlLangs ? 'rtl' : 'ltr');
         document.dir = locale! in rtlLangs ? 'rtl' : 'ltr';
     }, [locale]);
 
     return (
-        <Provider store={Store}>
-            <ThemeProvider theme={darkModeTheme}>
-                <Toaster
-                    position='bottom-left'
-                    containerStyle={{
-                        zIndex: 9999,
-                        textAlign: 'right',
-                        direction: direction
-                    }}
-                />
-                <Component {...pageProps} />
-            </ThemeProvider>
-        </Provider>
+        <AuthProvider>
+            <Provider store={Store}>
+                <ThemeProvider theme={darkModeTheme}>
+                    <Toaster
+                        position='bottom-left'
+                        containerStyle={{
+                            zIndex: 9999,
+                            textAlign: 'right',
+                            direction: direction
+                        }}
+                    />
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </Provider>
+        </AuthProvider>
     );
 };
 

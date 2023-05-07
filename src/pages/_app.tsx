@@ -18,7 +18,10 @@ import '../assets/styles/globals/general.css';
 
 // Utils
 import { rtlLangs } from '../utils/constants';
-import { AuthProvider } from '@/context/AuthProvider';
+
+//persist
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
 
 NProgress.configure({
     minimum: 0.3,
@@ -32,9 +35,12 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 const App = ({ Component, pageProps }: AppProps) => {
+
     const { locale } = useRouter();
     const [direction, setDirection] = useState<'ltr' | 'rtl'>('rtl');
     const darkModeTheme = createTheme({ direction: direction }, theme());
+
+    let persistor = persistStore(Store);
     
     useEffect(() => {
         setDirection(locale! in rtlLangs ? 'rtl' : 'ltr');
@@ -42,21 +48,21 @@ const App = ({ Component, pageProps }: AppProps) => {
     }, [locale]);
 
     return (
-        <AuthProvider>
             <Provider store={Store}>
-                <ThemeProvider theme={darkModeTheme}>
-                    <Toaster
-                        position='bottom-left'
-                        containerStyle={{
-                            zIndex: 9999,
-                            textAlign: 'right',
-                            direction: direction
-                        }}
-                    />
-                    <Component {...pageProps} />
-                </ThemeProvider>
+                <PersistGate loading={null} persistor={persistor}>
+                    <ThemeProvider theme={darkModeTheme}>
+                        <Toaster
+                            position='bottom-left'
+                            containerStyle={{
+                                zIndex: 9999,
+                                textAlign: 'right',
+                                direction: direction
+                            }}
+                        />
+                        <Component {...pageProps} />
+                    </ThemeProvider>
+                </PersistGate>
             </Provider>
-        </AuthProvider>
     );
 };
 

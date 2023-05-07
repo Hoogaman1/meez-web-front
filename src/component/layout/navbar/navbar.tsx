@@ -20,13 +20,17 @@ import LocationDropDown from './location-dropdown';
 import Button from '@/component/form-group/button';
 import PhoneModal from '../auth/phone';
 import SearchModal from './search-modal';
+import { getUserIsLogged } from '@/state-manager/reducer/user';
+
+//actions
 
 const Navbar = () => {
+    
     const { t } = useTranslation('navbar');
     const dispatch = useDispatch();
-    const userAuthStatus = useSelector((state: RootState) => state.UserInfo.login);
+    const userAuthStatus =  useSelector((state: RootState) => state.UserInfo.userInfo.isLogged);
+
     const [searchModalStatus, setSearchModalStatus] = useState<boolean>(false);
-    // const userAuthStatus = useState<boolean>(false);
 
     const handleOpenAuthModal = (authType: 'register' | 'login') => {
         dispatch(

@@ -1,17 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export interface UserModel {
+    id: number;
+    token:string;
+    isLogged:boolean
+}
+
+const initialState = {
+    userInfo    :{ id :null,token:null,isLogged:null}
+}
+
 export const userReducer = createSlice({
     name: 'userInfo',
-    initialState: {
-        login: typeof window !== 'undefined' && localStorage.getItem('accessToken') !== null ? true : false
-    },
+    initialState,
     reducers: {
-        authStateHandler: (state, action) => {
-            state.login = action.payload;
+        loginAction:(state,action) => {
+            state.userInfo = action.payload
         }
     }
 });
 
-export const { authStateHandler } = userReducer.actions;
+export const { loginAction } = userReducer.actions;
+export const getUserToken = (state:any) => state.userInfo?.token;
+export const getUserIsLogged = (state:any) => state.userInfo?.isLogged;
 
 export default userReducer.reducer;

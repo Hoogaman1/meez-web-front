@@ -22,17 +22,16 @@ import { rtlLangs } from '../../../utils/constants';
 
 // API
 import { Login } from '@/api-request/auth';
+import { getUserIsLogged,loginAction } from '@/state-manager/reducer/user';
+import { useDispatch } from "react-redux";
 
 
-//authentication
-import useAuth from '../../../hooks/useAuth';
 
 
 const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; statusHandler: Function; phoneNumber: string }) => {
 
 
-    const { setAuth } : any = useAuth();
-
+    const dispatch = useDispatch()
     const { locale } = useRouter();
     const { t } = useTranslation('auth');
     const LoginModalStatus = useSelector((state: RootState) => state.Utils.authModalStatus);
@@ -48,9 +47,10 @@ const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; sta
         } else {
             Login(phoneNumber, OTPValue)
                 .then((res) => {
-                    // localStorage.setItem("accessToken",res.data.token);
-                    const accessToken   =   res.data.token;
-                    setAuth({ accessToken });
+                    let user   =   res.data;
+                    user.isLogged = true;
+                    dispatch(loginAction(user))
+                    
                 })
                 .catch(() => {})
                 .finally(() => {

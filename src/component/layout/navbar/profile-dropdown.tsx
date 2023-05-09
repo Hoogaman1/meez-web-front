@@ -9,6 +9,12 @@ import Avatar from '../../../assets/images/icons/avatar.svg';
 
 // Hook
 import useOutsideClick from '../../../hooks/useOutsideClick';
+import { useDispatch } from "react-redux";
+
+//Reducers
+import { logout } from '@/state-manager/reducer/user';
+import Button from '@/component/form-group/button';
+
 
 const ProfileDropDown = () => {
     const ref = useRef(null);
@@ -26,6 +32,14 @@ const ProfileDropDown = () => {
         openMenu('');
     });
 
+    const dispatch = useDispatch();
+
+    const submitHandlerLogout = () => {
+        const userInfo = { id: 0,token:'',isLogged:false};
+        dispatch(logout(userInfo));
+    };
+
+
     return (
         <MainField ref={ref}>
             <Image src={Avatar} alt='' className='avatar' onClick={() => openMenu('profile')} />
@@ -42,7 +56,7 @@ const ProfileDropDown = () => {
                         <Link href='/user/favorits'>{t('My Save Resturants')}</Link>
                     </li>
                     <li>
-                        <Link href='/'>{t('Sign Out')}</Link>
+                        <Link href="/" onClick={submitHandlerLogout} >{t('Sign Out')}</Link>
                     </li>
                 </ul>
             </div>

@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+const userInfo = { id: 0,token:'',isLogged:false}  
+
+
 const initialState = {
-    userInfo    : { id :null,token:null,isLogged:null}
+    userInfo
 }
 
 export const userReducer = createSlice({
@@ -10,11 +14,14 @@ export const userReducer = createSlice({
     reducers: {
         loginAction:(state,action) => {
             state.userInfo = action.payload
+        },
+        logout:(state,action) =>{
+            state.userInfo = action.payload
         }
     }
 });
 
-export const { loginAction } = userReducer.actions;
+export const { loginAction,logout } = userReducer.actions;
 export const getUserToken = (state:any) => state.userInfo?.token;
 export const getUserIsLogged = (state:any) => state.userInfo?.isLogged;
 

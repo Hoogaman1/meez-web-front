@@ -24,6 +24,7 @@ import { rtlLangs } from '../../../utils/constants';
 import { Login } from '@/api-request/auth';
 import { getUserIsLogged,loginAction } from '@/state-manager/reducer/user';
 import { useDispatch } from "react-redux";
+import { authModalStatusHandler } from '@/state-manager/reducer/utils';
 
 
 
@@ -31,13 +32,22 @@ import { useDispatch } from "react-redux";
 const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; statusHandler: Function; phoneNumber: string }) => {
 
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const { locale } = useRouter();
     const { t } = useTranslation('auth');
     const LoginModalStatus = useSelector((state: RootState) => state.Utils.authModalStatus);
     const [loading, setLoading] = useState<boolean>(false);
     const [OTPValue, setOTPValue] = useState<string>('');
     const [userInfoModalStatus, setUserInfoModalStatus] = useState<boolean>(false);
+
+    const closeModalHandler = () => {
+        dispatch(
+            authModalStatusHandler({
+                ...OTPModal,
+                status: false
+            })
+        );
+    };
 
     const submitHandler = () => {
         setLoading(true);
@@ -49,8 +59,8 @@ const OTPModal = ({ status, statusHandler, phoneNumber }: { status: boolean; sta
                 .then((res) => {
                     let user   =   res.data;
                     user.isLogged = true;
-                    dispatch(loginAction(user))
-                    
+                    dispatch(loginAction(user));
+                    closeModalHandler();
                 })
                 .catch(() => {})
                 .finally(() => {

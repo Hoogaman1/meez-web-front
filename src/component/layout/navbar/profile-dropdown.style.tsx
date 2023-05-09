@@ -19,6 +19,7 @@ export const MainField = styled.div({
 
         '&.show': {
             opacity: '1',
+            zIndex:5,
             pointerEvents: 'initial'
         },
 

@@ -58,9 +58,16 @@ const PhoneModal = () => {
         const phoneNumber = inputValue.phoneCode.replace('+', '') + inputValue.phoneNumber;
         setLoading(true);
         OTP(phoneNumber)
-            .then(() => {
+            .then((res) => {
                 closeModalHandler();
-                setVerifyModalStatus(true);
+                if(res.status=== 226)
+                {
+                    setVerifyModalStatus(true);
+                }
+                else
+                {
+                    
+                }
             })
             .catch(() => {})
             .finally(() => {

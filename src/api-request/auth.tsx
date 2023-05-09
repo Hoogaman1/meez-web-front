@@ -17,5 +17,5 @@ export const Login = async (phone: string, activate_code: string) => {
 };
 
 export const OTP = async (phone: string) => {
-    return RequestHandler.post('/MASTER/phone/', { phone }).then(res => res.data);
+    return RequestHandler.post('/MASTER/phone/', { phone }).then(res => res);
 };

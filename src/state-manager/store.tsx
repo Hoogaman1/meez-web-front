@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import {combineReducers} from "redux"; 
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import UserInfo from './reducer/user';
+import Hotel from './reducer/hotel';
 import Utils from './reducer/utils';
 import thunk from 'redux-thunk'
 
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const reducers = combineReducers({
     UserInfo: UserInfo,
-    Utils: Utils
+    Utils: Utils,
+    Hotel:Hotel
 });
    
 
